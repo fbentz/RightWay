@@ -1,19 +1,19 @@
 const
     events = require('events'),
-    util = require('util'),
+    util = require('util');
 
     LDJClient = function(stream) {
         events.eventEmitter.call(this);
-        let
+        var
             self = this,
             buffer = '';
         stream.on('data', function(data) {
             buffer += data;
-            let boundary = buffer.indexOf('\n');
+            var boundary = buffer.indexOf('\n');
             while (boundary !== -1) {
-                let input = buffer.substr(0, boundary);
+                var input = buffer.substr(0, boundary);
                 buffer = buffer.substr(boundary + 1);
-                self.emit('message', JSON.parse(input)):
+                self.emit('message', JSON.parse(input));
                 boundary = buffer.indexOf('\n');
             }
         })

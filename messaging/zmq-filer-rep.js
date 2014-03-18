@@ -14,7 +14,7 @@ responder.on('message', function(data) {
     console.log('Sending response content');
     responder.send(JSON.stringify({
       content: content.toString(),
-      timestamp: Date.now();
+      timestamp: Date.now(),
       pid: process.pid
     }));
   });
